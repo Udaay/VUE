@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./app.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    Below name will be changed after 2secs, OR it can be changed by using input field.
+    <br>
+    {{ `${firstName} ${lastName}`}}
+    {{fullName}}
+    <p> <a v-bind:href="url" target="_blank">Google</a> </p>
+    <p> <a :href="url" target="_blank">Google Link 2</a> </p> <!-- shortCut for bind -->
+    <p v-html="raw_url"></p>
+
+    <p>This value ==> {{age}} {{now()}} will be modified by using Increment & Decrement button</p>
+    <hr />
+
+    <label>FirstName</label>
+    <input type="text" v-model.lazy="firstName" />
+
+    <label>lastName</label>
+    <input type="text" :value="lastName" @input.prevent="updateLastName('input trigger',$event)" />
+
+    <label>Middle Name</label>
+    <input type="text" @keyup.enter="updateMiddleName" />
+
+    <label>Age</label>
+    <input type="number" v-model.number="age" />
+
+    <button v-on:click="increment">Increment</button>
+    <button @click.ctrl="age--">Decrement</button>
+
+  </div>
+
+  <!-- <div id="app2">
+    {{ `${firstName} ${lastName}`}}
+    {{lastName}}
+  </div> -->
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="./app.js"> </script>
+</body>
+
+</html>

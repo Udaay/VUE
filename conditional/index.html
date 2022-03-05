@@ -1,0 +1,60 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <title>VueJS Course</title>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+
+<body>
+  <div id="app">
+
+    <p v-if="mode === 1"> Showing v-if directive content </p>
+    <div v-else-if="mode === 2">
+      <p> Showing else part </p>
+    </div>
+    <h3 v-else> ELse part </h3>
+
+    <i v-show="false"> v-show </i>
+
+    <select v-model.number="mode">
+      <option value="1"> v-if </option>
+      <option value="2"> v-else-if </option>
+      <option value="3"> v-else </option>
+    </select>
+
+    <p>Below list are render using for-loop</p>
+
+    <ul>
+      Birds
+      <li v-for="(bird, i) in birds">{{bird}} {{i}}</li>
+    </ul>
+
+    <ul>
+      People, // using destructuring
+      <li v-for="{name , age} in people">
+        Name: {{ name }}, Age: {{ age }}
+      </li>
+    </ul>
+
+    <ul>
+      People, // using two v-for
+      <li v-for="(person, i) in people">
+        <div v-for="(value, key, index) in person" :key='i'>
+          {{key}}: {{value}} {{index}}
+        </div>
+      </li>
+    </ul>
+
+    <p>for in object</p>
+    <ul>
+      <li v-for="obj in myObject"> {{obj}} </li>
+    </ul>
+  </div>
+
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
